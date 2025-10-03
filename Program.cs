@@ -28,6 +28,7 @@ new (
 // Gtet all games
 app.MapGet("games", () => games);
 
-
+// Get game by ID
+app.MapGet("games/{id}", (int id) => games.Find(game => game.Id == id));
 
 app.Run();
