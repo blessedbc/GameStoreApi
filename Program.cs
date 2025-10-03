@@ -27,7 +27,7 @@ new (
     new DateOnly(2022, 9, 27)
 )
 ];
-// Gtet all games
+// Get all games
 app.MapGet("games", () => games);
 
 // Get game by ID
@@ -60,6 +60,13 @@ app.MapPut("games/{id}", (int id, UpdateGameDto updatedGame) =>
          updatedGame.Price,
          updatedGame.ReleaseDate
     );
+    return Results.NoContent();
+});
+
+// DELETE /games/{id}
+app.MapDelete("games/{id}", (int id) =>
+{
+    games.RemoveAll(game => game.Id == id);
     return Results.NoContent();
 });
 
