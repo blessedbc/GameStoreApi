@@ -40,7 +40,7 @@ new (
                        .WithParameterValidation();
 
        // Get all games
-        group.MapGet("/", () => games);
+        group.MapGet("/", (GameStoreContext dbContext) => games);
 
   // Get game by ID
   group.MapGet("/{id}", (int id, GameStoreContext dbContext) =>
